@@ -27,14 +27,17 @@ p = prob_vector_gen();
 % Vetor de erro
 e = [];
 
-% Tabela de transicao de estados
-state_table = tabela_diagrama_de_estados(g_1, g_2, g_3);
+%% Tabela de transicao de estados.
+%   Para um estado i em binario, a tabela contem na (em_decimal(i) + 1) linha e coluna 1
+% o saída em decimal se a entrada eh 0 e coluna 2 se a entrada eh 1.
+[state_table, s] = tabela_diagrama_de_estados(g_1, g_2, g_3);
 
+%%
 % Vetor com 0 e uns 1 de tamanho 10000
 u = randi([0 1], 1, 10000);
 
 % codificacao => v com tamanho 30000
-v = encoder(u, state_table);
+v = encoder(u, state_table, s);
 
 % Para cada probabilidade prob no vetor p
 for prob = p
