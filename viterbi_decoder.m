@@ -7,7 +7,7 @@ function [ ue ] = viterbi_decoder( v, state_table, s, U)
     P = zeros(2^s, U +1);
     R = zeros(2^s, U +1);
     C(1,1) = 0;
-    
+
 %%
     for i = 1:U
         
@@ -30,15 +30,12 @@ function [ ue ] = viterbi_decoder( v, state_table, s, U)
         end
         
     end
-    
-    %C
-    %P
-    %R
+
     
  %% 
     min = Inf;
     min_j = 0;
-    for j = 1:s
+    for j = 1:2^s
         if C(j, U +1) < min;
             min = C(j, U +1);
             min_j = j;

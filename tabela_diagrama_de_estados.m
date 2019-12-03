@@ -18,7 +18,5 @@ table = [];
         one_i_b = [1 i_b];
         table(i, 2) = bi2de( flip( mod([g_1*one_i_b.' g_2*one_i_b.' g_3*one_i_b.'], 2) ) );
     end
-    table
-
 end
 
