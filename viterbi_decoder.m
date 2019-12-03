@@ -11,14 +11,14 @@ function [ ue ] = viterbi_decoder( v, state_table, s, U)
 %%
     for i = 1:U
         
-        slice = v((3*i-2):(3*i));
+        partition = v((3*i-2):(3*i));
         
         for j = 1:2^s
 
-            for k = 0:1
+            for k = [0 1]
                 next_j = next_state(k, j, s);
                 
-                aux = C(j, i) + hamming_weight( slice, state_table( j ,1+k) );
+                aux = C(j, i) + hamming_weight( partition, de2bi(state_table(j ,1+k), 3, 'left-msb') );
                 if C(next_j, i+1) > aux
                     C(next_j, i+1) = aux;
                     P(next_j, i+1) = j;
@@ -31,10 +31,14 @@ function [ ue ] = viterbi_decoder( v, state_table, s, U)
         
     end
     
+    %C
+    %P
+    %R
+    
  %% 
     min = Inf;
     min_j = 0;
-    for j = s
+    for j = 1:s
         if C(j, U +1) < min;
             min = C(j, U +1);
             min_j = j;
@@ -43,11 +47,10 @@ function [ ue ] = viterbi_decoder( v, state_table, s, U)
     
     ue = zeros(1, U);
     
-    for i = (U+1):2
+    for i = (U+1):-1:2
         ue(i-1) = R(min_j, i);
         min_j = P(min_j, i);
     end
-    
 
 end
 
