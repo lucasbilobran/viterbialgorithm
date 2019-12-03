@@ -1,6 +1,8 @@
 %% m and g vectors used
 clear all;
 
+U = 10000;
+
 m = 3;
 g_1 = [1 0 1 1];
 g_2 = [1 1 0 1];
@@ -34,7 +36,7 @@ e = [];
 
 %%
 % Vetor com 0 e uns 1 de tamanho 10000
-u = randi([0 1], 1, 10000);
+u = randi([0 1], 1, U);
 
 % codificacao => v com tamanho 30000
 v = encoder(u, state_table, s);
@@ -47,13 +49,13 @@ for prob = p
     ve = bsc(v, prob);
 
     % decodifica
-    ue = viterbi_decoder(ve, state_table, s);
+    ue = viterbi_decoder(ve, state_table, s, U);
 
     % quantidade de erros na tramissao
     eT = 0;
     
     % compara transmitido e recebido
-    for j = 1:k
+    for j = 1:U
         if u(j) ~= ue(j)
             eT = eT + 1;
         end
@@ -63,5 +65,5 @@ for prob = p
 
 end
 
-prob_err = [prob_err e/10000];
+prob_err = [prob_err e/U];
     
