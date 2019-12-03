@@ -1,7 +1,7 @@
 %% m and g vectors used
 clear all;
 
-U = 10000;
+U = 4;
 
 m = 3;
 g_1 = [1 0 1 1];

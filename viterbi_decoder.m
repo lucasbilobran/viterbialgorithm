@@ -9,7 +9,7 @@ function [ ue ] = viterbi_decoder( v, state_table, s, U)
     C(1,1) = 0;
     
 %%
-    for i = 1:10000
+    for i = 1:U
         
         slice = v((3*i-2):(3*i));
         
@@ -35,7 +35,7 @@ function [ ue ] = viterbi_decoder( v, state_table, s, U)
     min = Inf;
     min_j = 0;
     for j = s
-        if C(j, 10001) < min;
+        if C(j, U +1) < min;
             min = C(j, U +1);
             min_j = j;
         end
