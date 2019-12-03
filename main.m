@@ -1,22 +1,22 @@
 %% m and g vectors used
 clear all;
 
-U = 4;
+U = 10000;
 
-m = 3;
-g_1 = [1 0 1 1];
-g_2 = [1 1 0 1];
-g_3 = [1 1 1 1];
+%m = 3;
+%g_1 = [1 0 1 1];
+%g_2 = [1 1 0 1];
+%g_3 = [1 1 1 1];
 
 %m = 4;
 %g_1 = [1 0 1 0 1];
 %g_2 = [1 1 0 1 1];
 %g_3 = [1 1 1 1 1];
 
-%m = 5;
-%g_1 = [1 0 0 1 1 1 1];
-%g_2 = [1 0 1 0 1 1 1];
-%g_3 = [1 1 0 1 1 0 1];
+m = 6;
+g_1 = [1 0 0 1 1 1 1];
+g_2 = [1 0 1 0 1 1 1];
+g_3 = [1 1 0 1 1 0 1];
 
 %% Code
 
@@ -32,7 +32,7 @@ e = [];
 %% Tabela de transicao de estados.
 %   Para um estado i em binario, a tabela contem na (em_decimal(i) + 1) linha e coluna 1
 % o saída em decimal se a entrada eh 0 e coluna 2 se a entrada eh 1.
-[state_table, s] = tabela_diagrama_de_estados(g_1, g_2, g_3);
+[state_table, s] = tabela_diagrama_de_estados(g_1, g_2, g_3, m);
 
 %%
 % Vetor com 0 e uns 1 de tamanho 10000
@@ -62,8 +62,7 @@ for prob = p
     end
     
     e = [e; eT];
+    eT/U
 
 end
-
-prob_err = [prob_err e/U];
     
