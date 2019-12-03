@@ -47,7 +47,7 @@ for prob = p
     ve = bsc(v, prob);
 
     % decodifica
-    ue = viterbi_decoder(ve, state_table);
+    ue = viterbi_decoder(ve, state_table, s);
 
     % quantidade de erros na tramissao
     eT = 0;
@@ -63,5 +63,5 @@ for prob = p
 
 end
 
-prob_err = [prob_err e/10^6];
+prob_err = [prob_err e/10000];
     
