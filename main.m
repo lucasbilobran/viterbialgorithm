@@ -62,7 +62,9 @@ for prob = p
     
 
     % decodifica
-    ue = viterbi_decoder(ve, state_table, s, U);
+    %ue = viterbi_decoder_prob(ve, state_table, s, U, prob);
+    %ue = viterbi_decoder(ve, state_table, s, U);
+    ue = viterbi_decoder_euclidean(ve, state_table, s, U);
 
     % quantidade de erros na tramissao
     eT = 0;

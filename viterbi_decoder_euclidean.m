@@ -1,4 +1,4 @@
-function [ ue ] = prob_viterbi_decoder( v, state_table, s, U)
+function [ ue ] = viterbi_decoder_euclidean( v, state_table, s, U)
 %VITERBI_DECODER Summary of this function goes here
 %   Detailed explanation goes here
     
@@ -18,7 +18,7 @@ function [ ue ] = prob_viterbi_decoder( v, state_table, s, U)
             for k = [0 1]
                 next_j = next_state(k, j, s);
                 
-                aux = C(j, i) + hamming_weight( partition, de2bi(state_table(j ,1+k), 3, 'left-msb') );
+                aux = C(j, i) + abs(euclidean_weight( partition, de2bi(state_table(j ,1+k), 3, 'left-msb')));
                 if C(next_j, i+1) > aux
                     C(next_j, i+1) = aux;
                     P(next_j, i+1) = j;
@@ -28,6 +28,10 @@ function [ ue ] = prob_viterbi_decoder( v, state_table, s, U)
             end
             
         end
+        
+        %C
+        %R
+        %P
         
     end
 
