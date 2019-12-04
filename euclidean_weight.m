@@ -1,8 +1,8 @@
-function [ weight ] = hamming_weight( a, b )
+function [ weight ] = prob_weight( a, b)
 %HAMMING_WEIGHT Summary of this function goes here
 %   Detailed explanation goes here
-
-    weight = nnz( mod( (a+b) , 2 ) );
+    V = a - b;
+    weight = sqrt(V * V');
 
 end
 
