@@ -1,17 +1,17 @@
 function new_plots() %Funcao para plotar graficos.
 %Precisa alterar para incluir novos vetores do teste do codigo cilcico
-load('m_3_euclides')
-load('m_4_euclides')
-load('m_6_euclides')
+load('m_3_prob')
+load('m_4_prob')
+load('m_6_prob')
 load('p_convolucao')
 %%
 figure;
 %loglog(p_vec, P_B_hamming, 'LineWidth', 1, 'color' ,'r'); 
 loglog(p, p, 'LineWidth', 1, 'color', 'b');
 hold on;
-loglog(p, m_3_euclides, 'LineWidth', 1, 'color', 'y');
-loglog(p, m_4_euclides, 'LineWidth', 1, 'color', 'g');
-loglog(p, m_6_euclides, 'LineWidth', 1, 'color', 'k');
+loglog(p, m_3_prob, 'LineWidth', 1, 'color', 'c');
+loglog(p, m_4_prob, 'LineWidth', 1, 'color', 'g');
+loglog(p, m_6_prob, 'LineWidth', 1, 'color', 'k');
 
 %loglog(p_vec, data_n_10_k_6_bit_1, 'LineWidth', 1, 'color', 'k');
 %loglog(p_vec, data_n_12_k_7_bit_1, 'LineWidth', 1, 'color', 'k');
@@ -24,11 +24,12 @@ loglog(p, m_6_euclides, 'LineWidth', 1, 'color', 'k');
 %loglog(p_vec, data_n_20_k_13_bit_2, 'LineWidth', 1, 'color', 'k');
 %loglog(p_vec, data_n_08_k_5_bit_1, 'LineWidth', 1, 'color', 'k');
 
+grid on;
 legend('Nao codificado', 'm = 3', 'm = 4', 'm = 6');
 set(gca, 'xdir', 'reverse')
 xlabel('Probabilidade de erro na transmissao (p)');
 ylabel('Probabilidade de erro na decodificacao (P_{b})');
-title('Erro na transmissao vs erro na decodificacao (logaritmo)');
+title('Código convolucional BSC');
 %%
 load('resp')
 load('resp2')
