@@ -1,4 +1,4 @@
-function [ ue ] = prob_viterbi_decoder( v, state_table, s, U)
+function [ ue ] = viterbi_decoder( v, state_table, s, U)
 %VITERBI_DECODER Summary of this function goes here
 %   Detailed explanation goes here
     
