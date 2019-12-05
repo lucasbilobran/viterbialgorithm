@@ -1,35 +1,31 @@
 function new_plots() %Funcao para plotar graficos.
 %Precisa alterar para incluir novos vetores do teste do codigo cilcico
-load('m_3_prob')
-load('m_4_prob')
-load('m_6_prob')
-load('p_convolucao')
-%%
+load('final_hamming')
+load('final_prob')
+load('final_euclides')
+load('pHamming')
+load('pbCiclico')
+load('pOurs')
+load('x')
+load('q')
+
 figure;
 %loglog(p_vec, P_B_hamming, 'LineWidth', 1, 'color' ,'r'); 
-loglog(p, p, 'LineWidth', 1, 'color', 'b');
+loglog(x, q, 'LineWidth', 1);
 hold on;
-loglog(p, m_3_prob, 'LineWidth', 1, 'color', 'c');
-loglog(p, m_4_prob, 'LineWidth', 1, 'color', 'g');
-loglog(p, m_6_prob, 'LineWidth', 1, 'color', 'k');
-
-%loglog(p_vec, data_n_10_k_6_bit_1, 'LineWidth', 1, 'color', 'k');
-%loglog(p_vec, data_n_12_k_7_bit_1, 'LineWidth', 1, 'color', 'k');
-%loglog(p_vec, data_n_12_k_7_bit_2, 'LineWidth', 1, 'color', 'k');
-%loglog(p_vec, data_n_14_k_8_bit_1, 'LineWidth', 1, 'color', 'k');
-%loglog(p_vec, data_n_15_k_10_bit_1, 'LineWidth', 1, 'color', 'k');
-%loglog(p_vec, data_n_15_k_9_bit_1, 'LineWidth', 1, 'color', 'k');
-%loglog(p_vec, data_n_15_k_9_bit_2, 'LineWidth', 1, 'color', 'k');
-%loglog(p_vec, data_n_20_k_13_bit_1, 'LineWidth', 1, 'color', 'k');
-%loglog(p_vec, data_n_20_k_13_bit_2, 'LineWidth', 1, 'color', 'k');
-%loglog(p_vec, data_n_08_k_5_bit_1, 'LineWidth', 1, 'color', 'k');
+loglog(x, pHaming, 'LineWidth', 1);
+loglog(x, pOurs, 'LineWidth', 1);
+loglog(x, pbCustom, 'LineWidth', 1);
+loglog(x, final_hamming, 'LineWidth', 1);
+loglog(x, final_prob, 'LineWidth', 1);
+loglog(x, final_euclides, 'LineWidth', 1);
 
 grid on;
-legend('Nao codificado', 'm = 3', 'm = 4', 'm = 6');
-set(gca, 'xdir', 'reverse')
-xlabel('Probabilidade de erro na transmissao (p)');
-ylabel('Probabilidade de erro na decodificacao (P_{b})');
-title('Código convolucional BSC');
+legend('Nao codificado', 'Hamming', 'Nosso', 'Cíclico', 'Conv Hamming', 'Conv Probabilidade', 'Conv Euclides');
+%set(gca, 'xdir', 'reverse')
+ylabel('Probabilidade de erro na transmissao (p)');
+xlabel('Energia por bit de informação por No (Ei/No)');
+title('Comparação Justa');
 %%
 load('resp')
 load('resp2')

@@ -9,24 +9,24 @@
 % ================================================ %
 
 %% m and g vectors used
-clear all;
+%clear all;
 
 U = 10000;
 
-m = 3;
-g_1 = [1 0 1 1];
-g_2 = [1 1 0 1];
-g_3 = [1 1 1 1];
+%m = 3;
+%g_1 = [1 0 1 1];
+%g_2 = [1 1 0 1];
+%g_3 = [1 1 1 1];
 
 %m = 4;
 %g_1 = [1 0 1 0 1];
 %g_2 = [1 1 0 1 1];
 %g_3 = [1 1 1 1 1];
 
-%m = 6;
-%g_1 = [1 0 0 1 1 1 1];
-%g_2 = [1 0 1 0 1 1 1];
-%g_3 = [1 1 0 1 1 0 1];
+m = 6;
+g_1 = [1 0 0 1 1 1 1];
+g_2 = [1 0 1 0 1 1 1];
+g_3 = [1 1 0 1 1 0 1];
 
 %% Code
 
@@ -34,7 +34,7 @@ g_3 = [1 1 1 1];
 prob_err = [];
 
 % Vetor de probabilidades
-p = [0.5 0.45 0.4 0.35 0.3 0.25 0.2 0.15 0.1 0.09 0.06];
+%p = [0.5 0.45 0.4 0.35 0.3 0.25 0.2 0.15 0.1 0.09 0.06];
 %p = [0.5; 0.2; 0.1];
 %p = [p; p/10; p/100; p/1000; p/10000; p/100000]';
     
@@ -59,13 +59,13 @@ v = encoder(u, state_table, s);
 for prob = p
     
     % considera erro na transmissao
-    ve = bsc(v, prob);
-    %ve = bpsk(v, prob);
+    %ve = bsc(v, prob);
+    ve = bpsk(v, prob);
 
     % decodifica
-    ue = viterbi_decoder_prob(ve, state_table, s, U, prob);
+    %ue = viterbi_decoder_prob(ve, state_table, s, U, prob);
     %ue = viterbi_decoder(ve, state_table, s, U);
-    %ue = viterbi_decoder_euclidean(ve, state_table, s, U, prob);
+    ue = viterbi_decoder_euclidean(ve, state_table, s, U, prob);
 
     % quantidade de erros na tramissao
     eT = 0;
